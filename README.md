@@ -1,1 +1,1 @@
-Visit https://maximehk.github.io/web/
+Visit [maximehk.github.io/web](https://maximehk.github.io/web/)
