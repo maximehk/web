@@ -1,79 +1,75 @@
 <html>
 <head>
 <style>
-iframe {
-  width: 100%;
-  max-width: 1000px;
-  aspect-ratio: 4/3;
-}
+  iframe {
+    width: 100%;
+    max-width: 1000px;
+    aspect-ratio: 4/3;
+  }
+
+  footer {
+    padding-top: 30px;
+  }
+
+  li{
+    margin-bottom: 10px;
+  }
 </style>
-
-<script type="text/javascript">
-
-	function CreateIframes() {
-		const frames = [
-		{
-			location_id: "madrisa",
-			location: "Madrisa",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4011&lg=en&c1=0&flc=1"
-		}, {
-			location_id: "madrisa_top",
-			location: "Madrisa Top",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4007&lg=en&c1=0&flc=1"
-		},{
-			location_id: "weissfluhjoch",
-			location: "Weissfluhjoch",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4002&lg=de&c1=0&flc=1"
-		},{
-			location_id: "klosters_sports_zentrum",
-			location: "Klosters sports zentrum",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4005&lg=en&c1=0&flc=1"
-		},{
-			location_id: "monbiel",
-			location: "Monbiel",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4008&lg=en&c1=0&flc=1"
-		},{
-			location_id: "jackobshorn",
-			location: "Jackobshorn",
-			url: "https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4003&lg=en&c1=0&flc=1"
-		}
-		];
-
-		var content = document.createElement("div");
-		var links = document.createElement("ul");
-
-		frames.map(function(entry) {
-			var title = document.createElement("h2")
-			title.appendChild(document.createTextNode(entry.location));
-			title.id = entry.location_id;
-			content.appendChild(title);
-
-			var iframe = document.createElement("iframe");
-			iframe.src = entry.url;
-			content.appendChild(iframe);
-
-			var link = document.createElement("a");
-			link.href = "#" + entry.location_id;
-			link.appendChild(document.createTextNode(entry.location));
-			var li  = document.createElement("li");
-			li.appendChild(link);
-			links.appendChild(li);
+  <div id="main-links">
+    <h2>Links</h2>
+    <ul>
+      <li><a href="https://winter.intermaps.com/davos?pos=1200_1300_18">Interacive ski map</a></li>
+      <li><a href="https://www.meteoswiss.admin.ch/local-forecasts/klosters/7250.html#forecast-tab=detail-view">MeteoSwiss</a></li>
+      <li><a href="https://whiterisk.ch/en/conditions/measurements/station/IMIS/WFJ2">Weather measurements at Weissfluhjoch</a></li>
+    </ul>
+  </div>
 
 
-		});
-		document.body.appendChild(links);
-		document.body.appendChild(content);
+  <div id="webcam-links">
+    <h2>Webcam links</h2>
+    <ul>
+      <li><a href="#madrisa">Madrisa</a></li>
+      <li><a href="#madrisa_top">Madrisa Top</a></li>
+      <li><a href="#weissfluhjoch">Weissfluhjoch</a></li>
+      <li><a href="#klosters_sports_zentrum">Klosters Sports Zentrum</a></li>
+      <li><a href="#monbiel">Monbiel</a></li>
+      <li><a href="#jackobshorn">Jackobshorn</a></li>
+    </ul>
+  </div>
 
-	};
-</script>
 
-<body onload="CreateIframes()">
-	<ul>
-		<li><a href="https://winter.intermaps.com/davos?pos=1200_1300_18">Interacive ski map</a></li>
-		<li><a href="https://www.meteoswiss.admin.ch/local-forecasts/klosters/7250.html#forecast-tab=detail-view">MeteoSwiss</a></li>
-		<li><a href="https://whiterisk.ch/en/conditions/measurements/station/IMIS/WFJ2">Weather measurements at Weissfluhjoch</a></li>
-		<li>source: <a href="https://www.feratel.com/webcams/schweiz/klosters-dorf-madrisa-land.html">feratel.com</a></li>
-	</ul>
+  <div class="webcams">
+    <div class="webcam">
+      <h3 id="madrisa">Madrisa</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4011&lg=en&c1=0&flc=1"></iframe>
+    </div>
+    
+    <div class="webcam">
+      <h3 id="madrisa_top">Madrisa Top</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4007&lg=en&c1=0&flc=1"></iframe>
+    </div>
+    
+    <div class="webcam">
+      <h3 id="weissfluhjoch">Weissfluhjoch</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4002&lg=de&c1=0&flc=1"></iframe>
+    </div>
+    
+    <div class="webcam">
+      <h3 id="klosters_sports_zentrum">Klosters sports zentrum</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4005&lg=en&c1=0&flc=1"></iframe>
+    </div>
+    
+    <div class="webcam">
+      <h3 id="monbiel">Monbiel</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4008&lg=en&c1=0&flc=1"></iframe>
+    </div>
+    
+    <div class="webcam">
+      <h3 id="jackobshorn">Jackobshorn</h3>
+      <iframe src="https://webtv.feratel.com/webtv/?design=v5&sound=muted&pg=DA7D2F22-8600-464D-9D4F-CDB04014A6C5&cam=4003&lg=en&c1=0&flc=1"></iframe>
+    </div>
+  </div>
 </body>
+<footer>source: <a href="https://www.feratel.com/webcams/schweiz/klosters-dorf-madrisa-land.html">feratel.com</a></footer>
 </html>
 
