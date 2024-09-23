@@ -2,52 +2,62 @@
 <head>
   <link rel="stylesheet" href="static/styles.css">
 
-  <!-- Boostrap start -->
-  <!-- Latest compiled and minified CSS -->
+  <!-- Bootstrap start -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 
-  <!-- Optional theme -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 
-  <!-- Latest compiled and minified JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-  <!-- Boostrap end -->
+  <!-- Bootstrap end -->
+  
+  <style>
+    .tile {
+      padding: 20px;
+      margin: 10px;
+      background-color: #f5f5f5;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .tile:hover {
+      background-color: #e6e6e6;
+    }
+    .tile a {
+      display: block;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
   
-  <div id="main-links">
+  <div id="main-links" class="container">
     <h2>Links</h2>
-    <ul>
-      <li><a href="https://winter.intermaps.com/davos?pos=1200_1300_18">Interactive ski map</a></li>
-      <li><a href="https://www.davos.ch/en/?offcanvas=livestatus#">Live status (slopes)</a></li>
-      <li><a href="https://www.meteoswiss.admin.ch/local-forecasts/klosters/7250.html#forecast-tab=detail-view">MeteoSwiss</a></li>
-      <li><a href="https://whiterisk.ch/en/conditions/measurements/station/IMIS/WFJ2">Weather measurements at Weissfluhjoch</a></li>
-      <li><span>Lift operating hours: </span>
-        <a href="hhttps://www.davosklostersmountains.ch/en/mountains/summer/live-info/lifts?mountain=1235">Summer</a> ; 
+    <div class="row">
+      <div class="col-sm-6 col-md-4 tile">
+        <a href="https://winter.intermaps.com/davos?pos=1200_1300_18">Interactive ski map</a>
+      </div>
+      <div class="col-sm-6 col-md-4 tile">
+        <a href="https://www.davos.ch/en/?offcanvas=livestatus#">Live status (slopes)</a>
+      </div>
+      <div class="col-sm-6 col-md-4 tile">
+        <a href="https://www.meteoswiss.admin.ch/local-forecasts/klosters/7250.html#forecast-tab=detail-view">MeteoSwiss</a>
+      </div>
+      <div class="col-sm-6 col-md-4 tile">
+        <a href="https://whiterisk.ch/en/conditions/measurements/station/IMIS/WFJ2">Weather measurements at Weissfluhjoch</a>
+      </div>
+      <div class="col-sm-6 col-md-4 tile">
+        <span>Lift operating hours: </span>
+        <a href="https://www.davosklostersmountains.ch/en/mountains/summer/live-info/lifts?mountain=1235">Summer</a> ; 
         <a href="https://www.davosklostersmountains.ch/en/mountains/winter/live-info/lifts?mountain=1235">Winter</a>
-      </li>
-      <li><a href="traffic.html">Travel times</a></li>
-    </ul>
+      </div>
+      <div class="col-sm-6 col-md-4 tile">
+        <a href="traffic.html">Travel times</a>
+      </div>
+    </div>
   </div>
-
-
-  <div id="webcam-links">
-    <h2>Webcam links</h2>
-    <ul>
-      <li><a href="#madrisa">Madrisa</a></li>
-      <li><a href="#madrisa_top">Madrisa Top</a></li>
-
-      <li><a href="#klosters_sports_zentrum">Klosters Sports Zentrum</a></li>
-      <li><a href="#monbiel">Monbiel</a></li>
-      
-      <li><a href="#weissfluhjoch">Weissfluhjoch</a></li>
-      <li><a href="#jackobshorn">Jackobshorn</a></li>
-      
-      <li><a href="#davosersee">Davosersee</a></li>
-      <li><a href="#rinerhorn">Rinerhorn</a></li>
-    </ul>
-  </div>
-
 
   <div class="webcams">
     <div class="webcam">
