@@ -3,29 +3,18 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Sample app with firebase auth</title>
+    <title>Homelab access</title>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-auth-compat.js"></script>
 </head>
 
 <body>
-    <span id="user-greeting" class="authenticated-only" style="display:none">Welcome <span id="user-email"></span></span>
+    <span id="user-greeting" class="authenticated-only" style="display:none">Welcome <span
+            id="user-email"></span></span>
     <button id="sign-out-button" class="authenticated-only" style="display:none">Sign Out</button>
-
-
-
-    <form id="login-form" class="unauthenticated-only" style="display:none">
-        <div>
-            <p>Please authenticate to continue.</p>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br><br>
-            <button type="submit">Login</button>
-        </div>
-    </form>
-
+    <button id="google-auth-button" class="unauthenticated-only" style="display:none">Authenticate with Google</button>
     <button id="call-api-button" class="authenticated-only" style="display:none">Call API</button>
+
 
     <script>
         var firebaseConfig = {
@@ -35,34 +24,13 @@
 
         firebase.initializeApp(firebaseConfig);
 
-        document.getElementById('login-form').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent default form submission
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            document.getElementById('password').value = '';
-
-            firebase.auth().signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    document.getElementById('email').value = '';
-                    console.log('User signed in:', user);
-                })
-                .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    console.error('Error signing in:', errorCode, errorMessage);
-                    alert('Error signing in: ' + errorMessage);
-                });
-        });
-
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                document.querySelector('#user-email').textContent = user.email;
+                document.getElementById('user-email').textContent = user.email;
                 document.querySelectorAll('.authenticated-only').forEach(el => el.style.display = 'inline');
                 document.querySelectorAll('.unauthenticated-only').forEach(el => el.style.display = 'none');
             } else {
-                document.querySelector('#user-email').textContent = '';
+                document.getElementById('user-email').textContent = '';
                 document.querySelectorAll('.authenticated-only').forEach(el => el.style.display = 'none');
                 document.querySelectorAll('.unauthenticated-only').forEach(el => el.style.display = 'block');
             }
@@ -72,28 +40,35 @@
             firebase.auth().signOut();
         });
 
-        // Ensure initial display state is correct
-        firebase.auth().onAuthStateChanged(user => { /* This will trigger the display logic */ });
-
         document.getElementById('call-api-button').addEventListener('click', () => {
             firebase.auth().currentUser.getIdToken().then(function (idToken) {
                 fetch('https://whitelist-971920941308.europe-west1.run.app', {
                     method: 'POST',
                     headers: {
+                        'Authorization': 'Bearer ' + idToken,
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ token: idToken }),
                 })
-                    .then(response => response.json())
-                    .then(data => console.log('API Response:', data))
+                    .then(response => response.text())
+                    .then(result => alert(result))
                     .catch(error => console.error('Error calling API:', error));
             }).catch(function (error) {
                 console.error('Error getting ID token:', error);
             });
         });
+
+        document.getElementById('google-auth-button').addEventListener('click', () => {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth().signInWithPopup(provider)
+                .then((result) => {
+                    const user = result.user;
+                    console.log('Google Sign-In Successful:', user);
+                })
+                .catch((error) => {
+                    console.error('Google Sign-In Error:', error);
+                });
+        });
     </script>
-
-
 </body>
 
 </html>
