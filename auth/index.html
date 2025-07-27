@@ -13,7 +13,7 @@
             id="user-email"></span></span>
     <button id="sign-out-button" class="authenticated-only" style="display:none">Sign Out</button>
     <button id="google-auth-button" class="unauthenticated-only" style="display:none">Authenticate with Google</button>
-    <button id="call-api-button" class="authenticated-only" style="display:none">Call API</button>
+    <button id="call-api-button" class="authenticated-only" style="display:none">Allow HTTPS for my IP</button>
 
 
     <script>
@@ -42,12 +42,13 @@
 
         document.getElementById('call-api-button').addEventListener('click', () => {
             firebase.auth().currentUser.getIdToken().then(function (idToken) {
-                fetch('https://whitelist-971920941308.europe-west1.run.app', {
+                fetch('https://dispatch-971920941308.europe-west1.run.app', {
                     method: 'POST',
                     headers: {
                         'Authorization': 'Bearer ' + idToken,
                         'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({ action: "allow_ip_for_https" })
                 })
                     .then(response => response.text())
                     .then(result => alert(result))
